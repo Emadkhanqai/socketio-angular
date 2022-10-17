@@ -1,0 +1,19 @@
+APP COMPONENT
+<button (click)="connect()">Connect</button>
+<button (click)="disconnect()">Disconnect</button>
+<button (click)="sendMessage()">Send Message</button>
+
+<ul
+  style="
+    height: 300px;
+    overflow-y: auto;
+    display: block;
+    border: 1px solid black;
+  "
+>
+  <li *ngFor="let x of messages; let indexElement = index">
+    App Data: {{ indexElement }}: {{ x }}
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

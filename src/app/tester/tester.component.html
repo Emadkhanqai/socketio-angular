@@ -1,0 +1,15 @@
+CHILD COMPONENT
+<ul
+  style="
+    height: 300px;
+    overflow-y: auto;
+    display: block;
+    border: 1px solid black;
+  "
+>
+  <li *ngFor="let x of messages; let indexElement = index">
+    Child Data: {{ indexElement }}: {{ x }}
+  </li>
+</ul>
+
+<app-dumb [data]="messages"></app-dumb>
