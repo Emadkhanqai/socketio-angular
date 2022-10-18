@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SocketioService } from './socketio.service';
 import { TesterComponent } from './tester/tester.component';
 import { DumbComponent } from './dumb/dumb.component';
+import { SocketioParamService } from './socketioparam.service';
+import { FormsModule } from '@angular/forms';
+import { Store } from './store';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,10 @@ import { DumbComponent } from './dumb/dumb.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
   ],
-  providers: [SocketioService],
+  providers: [SocketioParamService, Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

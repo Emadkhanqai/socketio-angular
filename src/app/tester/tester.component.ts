@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketioService } from '../socketio.service';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-tester',
@@ -8,11 +8,12 @@ import { SocketioService } from '../socketio.service';
 })
 export class TesterComponent implements OnInit {
 
-  messages: any[] = [];
-  constructor(private socketService: SocketioService) { }
+  todos$ = this.store.select<any[]>('todos');
+
+  constructor(private store: Store) { }
 
   ngOnInit() {
-    this.messages = this.socketService.message;
+    console.log('tester dumb');
   }
 
   ngOnDestroy() {

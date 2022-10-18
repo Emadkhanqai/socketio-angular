@@ -5,13 +5,10 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './dumb.component.html',
   styleUrls: ['./dumb.component.scss']
 })
-export class DumbComponent implements OnInit {
+export class DumbComponent {
 
-  @Input() data: any[] = [];
+  @Input() todos: any;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

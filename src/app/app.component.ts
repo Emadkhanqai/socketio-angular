@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SocketioService } from './socketio.service';
+import { SocketioParamService } from './socketioparam.service';
+import { Store } from './store';
 
 @Component({
   selector: 'app-root',
@@ -8,31 +9,25 @@ import { SocketioService } from './socketio.service';
 })
 export class AppComponent {
 
-  messages: any[] = [];
-  interval: any;
+  todos$ = this.store.select<any[]>('todos');
+  selectedValue: any;
+  users = ['1', '2', '3'];
 
-  constructor(private socketService: SocketioService) {
-    console.log('connected');
+  constructor(private socketService: SocketioParamService, private store: Store) {
     this.socketService.setupSocketConnection();
   }
 
   ngOnInit() {
-    this.socketService.receiveMessage();
-    this.messages = this.socketService.message;
+    this.socketService.displaySocketData();
   }
 
   sendMessage() {
-    this.socketService.sendMessage('Main App');
+    this.socketService.requestSocketData(2);
   }
 
-  connect() {
-    this.socketService.setupSocketConnection();
+  fetchValues() {
+    this.socketService.requestSocketData(this.selectedValue);
   }
-
-  disconnect() {
-    this.socketService.disconnect();
-  }
-
 
   ngOnDestroy() {
     this.socketService.disconnect();

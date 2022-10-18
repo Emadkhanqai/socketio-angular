@@ -7,9 +7,15 @@ CHILD COMPONENT
     border: 1px solid black;
   "
 >
-  <li *ngFor="let x of messages; let indexElement = index">
-    Child Data: {{ indexElement }}: {{ x }}
+  <!-- <li *ngFor="let x of messages[0]; let indexElement = index">
+    Child Data: {{ indexElement }}: {{ x.title }}
+  </li> -->
+
+  <li *ngFor="let todo of (todos$ | async)?.[0]">
+    {{ todo.title }}
   </li>
+
 </ul>
 
-<app-dumb [data]="messages"></app-dumb>
+<app-dumb [todos]="todos$ | async"></app-dumb>
+<!--  -->

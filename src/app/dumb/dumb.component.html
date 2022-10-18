@@ -1,7 +1,7 @@
 <ul
   style="height: 300px; overflow-y: auto; display: block; border: 1px solid red"
 >
-<li *ngFor="let x of data; let indexElement = index">
-  Dumb Data: {{ indexElement }}: {{ x }}
-</li>
+  <li *ngFor="let todo of todos[0]">
+    {{ todo.title }}
+  </li>
 </ul>

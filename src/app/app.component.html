@@ -1,8 +1,10 @@
 APP COMPONENT
-<button (click)="connect()">Connect</button>
-<button (click)="disconnect()">Disconnect</button>
 <button (click)="sendMessage()">Send Message</button>
-
+<select [(ngModel)]="selectedValue" (change)="fetchValues()">
+  <option *ngFor="let c of users" [ngValue]="c">{{ c }}</option>
+</select>
+<br />
+ 
 <ul
   style="
     height: 300px;
@@ -11,9 +13,9 @@ APP COMPONENT
     border: 1px solid black;
   "
 >
-  <li *ngFor="let x of messages; let indexElement = index">
-    App Data: {{ indexElement }}: {{ x }}
-  </li>
+<li *ngFor="let todo of (todos$ | async)?.[0]">
+  {{ todo.title }}
+</li>
 </ul>
 
 <router-outlet></router-outlet>
